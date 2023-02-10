@@ -4,6 +4,8 @@ public class Main {
     int guestsNum;
     String dishName;
     double dishPrice;
+    Dishes x = new Dishes();
+
     public void main(String[] args) {
         Scanner sc = new Scanner(System.in);// ваш код начнется здесь
         while (true) {
@@ -31,10 +33,9 @@ public class Main {
             }
             System.out.println("Блюдо добавлено в счёт.\nЕсли хотите добавить ещё блюдо в счёт - введите его название:\nЧтобы завершить список введите: Завершить");
             if (sc.nextLine().equalsIgnoreCase("завершить")) {
-                System.out.println("Список блюд: " + dishName);
-                System.out.println("Итоговый счёт: " + dishPrice);
-                System.out.println("Итоговая сумма с каждого гостя: " + dishPrice / guestsNum + "рублей");
+                break;
             }
+
         }
     }
 }
