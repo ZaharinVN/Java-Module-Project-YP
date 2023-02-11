@@ -1,13 +1,12 @@
-// dev branch for Y.Practicum
 import java.util.Scanner;
 public class Main {
-    int guestsNum;
-    String dishName;
-    double dishPrice;
-    Dishes x = new Dishes();
-
-    public void main(String[] args) {
-        Scanner sc = new Scanner(System.in);// ваш код начнется здесь
+    public static void main(String[] args) {
+        int guestsNum;
+        String dishName;
+        String allDishName = "";
+        double dishPrice;
+        double allDishPrice = 0;
+        Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("На какое количество человек хотите разделить счёт? (цифрой)");
             guestsNum = sc.nextInt();
@@ -21,21 +20,26 @@ public class Main {
         }
         while (true) {
             System.out.println("Введите наименование блюда");
-            dishName = sc.nextLine();
-            while (true) {
-                System.out.println("Введите стоимость товара цифрами в формате 'рубли.копейки'");
-                dishPrice = sc.nextDouble();
-                if (dishPrice > 0) {
-                    break;
-                } else {
-                    System.out.println("Введите цену больше 0 и в нужном формате");
-                }
+            dishName = sc.next();
+            if (dishName.equalsIgnoreCase("завершить")) {
+                break;
+            } else {
+                allDishName += dishName + "\n";
+            }
+            System.out.println("Введите стоимость блюда цифрами");
+            dishPrice = sc.nextDouble();
+            if (dishPrice > 0) {
+                allDishPrice+=dishPrice;
+            } else {
+                System.out.println("Введите цену больше 0 и в нужном формате");
             }
             System.out.println("Блюдо добавлено в счёт.\nЕсли хотите добавить ещё блюдо в счёт - введите его название:\nЧтобы завершить список введите: Завершить");
-            if (sc.nextLine().equalsIgnoreCase("завершить")) {
-                break;
-            }
-
         }
+        String str1 = "Список блюд: " + "\n" + allDishName;
+        System.out.println(str1);
+        String str2 = "Количество гостей - " + guestsNum;
+        System.out.println(str2 + " чел.");
+        String str3 ="Сумма для каждого гостя: " + allDishPrice/guestsNum;
+        System.out.println(str3 + " рублей");
     }
 }
